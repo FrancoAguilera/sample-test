@@ -2,6 +2,33 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type SalonDTO {
+  id: String!
+  name: String!
+  location: String!
+}
+
+type AppointmentDTO {
+  id: String!
+  customerName: String!
+  serviceName: String!
+  appointmentTime: DateTime!
+  salon: SalonDTO!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Query {
   hello: String!
+  appointments: [AppointmentDTO!]!
+  salons: [SalonDTO!]!
+}
+
+type Mutation {
+  addAppointment(customerName: String!, serviceName: String!, appointmentTime: DateTime!, salonId: String!): AppointmentDTO!
+  updateAppointment(id: String!, customerName: String!, serviceName: String!, appointmentTime: DateTime!): AppointmentDTO!
+  deleteAppointment(id: String!): AppointmentDTO!
 }

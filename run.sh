@@ -22,13 +22,6 @@ cd "$DIR/api"
 echo "[api] installing dependencies..."
 npm i
 
-
-while ! check_db; do
-  sleep 1
-  echo "[postgres] DB not ready yet. Retrying in 1 second..."
-done
-
-
 cd "$DIR/api"
 echo "[prisma] migrating db..."
 npx prisma migrate reset --force

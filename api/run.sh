@@ -8,4 +8,4 @@ port=$BACKEND_PORT
 
 [ -n "$(lsof -t -i :${port})" ] && kill $(lsof -t -i :$port)
 npm i
-npm run start
+npm run start:dev
